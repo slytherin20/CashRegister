@@ -64,6 +64,10 @@ function calculateAmount(){
         finalWarning.innerText="Cash Amount should be more than Bill Amount. "
         notesTable.classList.add("hidden");
     }
+    else if(cashAmt===billAmt){
+        finalWarning.innerText="No amount to return"
+        notesTable.classList.add("hidden");
+    }
     else{
         setNotes();
         finalWarning.innerText="";

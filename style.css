@@ -68,14 +68,18 @@ table,th,td{
     width: 200px;
     padding:5px;
 }
+.bill-warning,.final-warning{
+    font-weight: bold;
+    color: purple;
+    margin-top:10px;
+}
 @media screen and (max-width:450px){
     .main-container{
         width:100%;
     }
     table,th,td{
-        padding-left:2px;
-        padding-right: 2px;
-        font-size: 10px;
+        padding-left:5px;
+        padding-right:5px;
     }
     .display-result td{
         padding-top: 20px;
@@ -83,5 +87,12 @@ table,th,td{
     }
     .input-box{
         width: 90%;
+    }
+}
+@media  screen and (max-width: 320px) {
+    table,th,td{
+        padding-left:2px;
+        padding-right: 2px;
+        font-size: 10px;
     }
 }
