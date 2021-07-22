@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="index.js" async defer></script>
+    <title>Cash Register</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="heading-box">
+            <h1 class="heading">Cash Register</h1>
+            <p class="description">Cash Register helps you return the notes to the customer by entering bill amount and cash given by customer.</p>
+        </div>
+         <div class="input-box">
+            <label class="bill">
+                Bill Amount:
+                <input type="number" class="bill-inp"/>
+                <button class="next"type="submit">Next</button>
+                <div class="bill-warning"></div>
+            </label>
+            <label class="cash hidden">
+                Cash Amount:
+                <input type="number" class="cash-inp"/>
+            </label>
+            <button type="submit" class="btn hidden">Submit</button>
+            <div class="final-warning"></div>
+        </div>
+        <table class="balance-box hidden">
+            <tr class="notes">
+                <th>₹2000</th>
+                <th>₹500</th>
+                <th>₹100</th>
+                <th>₹20</th>
+                <th>₹10</th>
+                <th>₹5</th>
+                <th>₹1</th>
+            </tr>
+            <tr class="display-result">
+                <td class="two-thousand"> </td>
+                <td class="five-hundred"> </td>
+                <td class="hundred"> </td>
+                <td class="twenty"> </td>
+                <td class="ten"> </td>
+                <td class="five"> </td>
+                <td class="one"> </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
