@@ -29,7 +29,7 @@ nextBtn.addEventListener("click",showBillField)
 btn.addEventListener("click",calculateAmount);
 
 function showBillField(){
-    let billAmt = +billInput.value;
+    let billAmt = Math.ceil(+billInput.value);
     if(billAmt>0){
         cashField.classList.remove("hidden");
         btn.classList.remove("hidden");
@@ -41,10 +41,14 @@ function showBillField(){
 }
 
 function calculateAmount(){
-    let billAmt = +billInput.value;
+    let billAmt = Math.ceil(+billInput.value);
     let cashAmt = +cashInput.value;
     //Error conditions
-    if(billAmt<1 && cashAmt<1){
+    if(cashAmt!=(cashAmt|0)){
+        finalWarning.innerText = "Please enter valid cash amount in whole number.";
+        notesTable.classList.add("hidden");
+    }
+    else if(billAmt<1 && cashAmt<1){
         finalWarning.innerText = "Please enter valid bill amount and cash amount.";
         notesTable.classList.add("hidden");
     }
@@ -61,37 +65,45 @@ function calculateAmount(){
         notesTable.classList.add("hidden");
     }
     else{
+        setNotes();
         finalWarning.innerText="";
-        const remainingAmount = cashInput.value-billInput.value;
+        const remainingAmount = cashAmt-billAmt;
         countNotes(remainingAmount)
         printNotes()
     }
    
 }
 
+//Reset the note value.
+function setNotes(){
+    for(let key in notes){
+        notes[key] = 0;
+    }
+}
+
 function countNotes(remAmount){
     while(remAmount>0){
-        if(remAmount>2000){
+        if(remAmount>=2000){
             notes[2000] = (remAmount/2000) | 0;
             remAmount = remAmount%2000;
         }
-        else if(remAmount>500){
+        else if(remAmount>=500){
             notes[500] = (remAmount/500) | 0;
             remAmount = remAmount%500;
         }
-        else if(remAmount>100){
+        else if(remAmount>=100){
             notes[100] = (remAmount/100) | 0;
             remAmount = remAmount%100;
         }
-        else if(remAmount>20){
+        else if(remAmount>=20){
             notes[20] = (remAmount/20) | 0;
             remAmount = remAmount%20;
         }
-        else if(remAmount>10){
+        else if(remAmount>=10){
             notes[10] = (remAmount/10) | 0;
             remAmount = remAmount%10;
         }
-        else if(remAmount>5){
+        else if(remAmount>=5){
             notes[5] = (remAmount/5) | 0;
             remAmount = remAmount%5;
         }
@@ -103,25 +115,31 @@ function countNotes(remAmount){
 }
 function printNotes(){
     notesTable.classList.remove("hidden");
-    if(notes[2000]){
-        twoThousand.innerText = notes[2000];
-    }
-    if(notes[500]){
-        fiveHundred.innerText = notes[500];
-    }
-    if(notes[100]){
-        hundred.innerText = notes[100];
-    }
-    if(notes[20]){
-        twenty.innerText = notes[20];
-    }
-    if(notes[10]){
-        ten.innerText = notes[10];
-    }
-    if(notes[5]){
-        five.innerText = notes[5];
-    }
-    if(notes[1]){
-        one.innerText = notes[1];
-    }
+    notes[2000]?
+    (twoThousand.innerText = notes[2000]):
+    (twoThousand.innerText = "")
+
+    notes[500]?
+    (fiveHundred.innerText = notes[500]):
+    (fiveHundred.innerText = "")
+
+    notes[100]?
+    (hundred.innerText = notes[100]):
+    (hundred.innerText = "")
+
+    notes[20]?
+    (twenty.innerText = notes[20]):
+    (twenty.innerText = "")
+
+    notes[10]?
+    (ten.innerText = notes[10]):
+    (ten.innerText = "")
+
+    notes[5]?
+    (five.innerText = notes[5]):
+    (five.innerText = "")
+
+    notes[1]?
+    (one.innerText = notes[1]):
+    (one.innerText = "")
 }

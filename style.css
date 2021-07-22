@@ -50,13 +50,10 @@ table,th,td{
     border-collapse: collapse;
     padding:10px;
 }
-.notes,.heading-box{
+.notes,.heading-box,.table-desc{
     background-color: #462255;
     color: white;
     padding: 25px;
-}
-.heading-box{
-    box-shadow: 0 5px 5px #462255;
 }
 .hidden{
     display:none;
